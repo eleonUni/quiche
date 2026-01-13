@@ -2878,7 +2878,7 @@ impl<F: BufFactory> Connection<F> {
                 return Err(Error::Done);
             }
 
-            trace!("{} rx pkt {:?}", self.trace_id, hdr);
+            info!("{} rx pkt {:?}", self.trace_id, hdr);
 
             let versions = hdr.versions.ok_or(Error::Done)?;
 
@@ -2966,7 +2966,7 @@ impl<F: BufFactory> Connection<F> {
                 return Err(Error::Done);
             }
 
-            trace!("{} rx pkt {:?}", self.trace_id, hdr);
+            info!("{} rx pkt {:?}", self.trace_id, hdr);
 
             self.token = hdr.token;
             self.did_retry = true;
