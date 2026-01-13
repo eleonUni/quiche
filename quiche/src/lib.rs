@@ -3122,7 +3122,7 @@ impl<F: BufFactory> Connection<F> {
 
         let pn_len = hdr.pkt_num_len;
 
-        trace!(
+        info!(
             "{} rx pkt {:?} len={} pn={} {}",
             self.trace_id,
             hdr,

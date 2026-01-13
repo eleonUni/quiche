@@ -56,6 +56,7 @@ async fn main() {
     let socket = UdpSocket::bind(&args.address)
         .await
         .expect("UDP socket should be bindable");
+    let local_addr = socket.local_addr().unwrap();
     let mut listeners = listen(
         [socket],
         ConnectionParams::new_server(
@@ -70,6 +71,8 @@ async fn main() {
         DefaultMetrics,
     )
     .expect("should be able to create a listener from a UDP socket");
+
+    log::info!("listening on {:}", local_addr);
 
     // Pull connections off the socket and serve them.
     let accepted_connection_stream = &mut listeners[0];

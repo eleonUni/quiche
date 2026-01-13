@@ -129,7 +129,7 @@ where
             },
 
             _ => {
-                log::info!("received unhandled event: {event:?}");
+                log::trace!("received unhandled event: {event:?}");
                 Ok(())
             },
         }
@@ -166,7 +166,7 @@ where
         &mut self, headers: IncomingH3Headers,
         _priority: Option<RawPriorityValue>,
     ) {
-        log::info!("received headers: {:?}", &headers);
+        log::trace!("received headers: {:?}", &headers);
 
         let IncomingH3Headers {
             headers: list,

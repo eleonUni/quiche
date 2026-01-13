@@ -356,7 +356,7 @@ fn main() {
 
                 let scid = quiche::ConnectionId::from_vec(scid.to_vec());
 
-                debug!("New connection: dcid={:?} scid={:?}", hdr.dcid, scid);
+                info!("New connection: dcid={:?} scid={:?}", hdr.dcid, scid);
 
                 #[allow(unused_mut)]
                 let mut conn = quiche::accept(
@@ -626,7 +626,7 @@ fn main() {
             trace!("Collecting garbage");
 
             if c.conn.is_closed() {
-                info!(
+                trace!(
                     "{} connection collected {:?} {:?}",
                     c.conn.trace_id(),
                     c.conn.stats(),
