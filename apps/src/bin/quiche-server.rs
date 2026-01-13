@@ -277,7 +277,7 @@ fn main() {
                 }
 
                 if !quiche::version_is_supported(hdr.version) {
-                    warn!("Doing version negotiation");
+                    trace!("Doing version negotiation");
 
                     let len =
                         quiche::negotiate_version(&hdr.scid, &hdr.dcid, &mut out)
@@ -307,7 +307,7 @@ fn main() {
 
                     // Do stateless retry if the client didn't send a token.
                     if token.is_empty() {
-                        warn!("Doing stateless retry");
+                        trace!("Doing stateless retry");
 
                         let scid = quiche::ConnectionId::from_ref(&scid);
                         let new_token = mint_token(&hdr, &from);
