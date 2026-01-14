@@ -255,7 +255,7 @@ fn main() {
                 },
             };
 
-            trace!("got packet {hdr:?}");
+            info!("got packet {hdr:?}");
 
             let conn_id = if !cfg!(feature = "fuzzing") {
                 let conn_id = ring::hmac::sign(&conn_id_seed, &hdr.dcid);
